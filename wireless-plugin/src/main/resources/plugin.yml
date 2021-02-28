@@ -1,0 +1,38 @@
+name: Wireless
+version: ${project.version}
+main: me.robertlit.wireless.WirelessPlugin
+api-version: 1.13
+authors: [robertlit]
+
+commands:
+
+  wireless:
+    description: The main command of the Wireless plugin
+
+permissions:
+
+  wireless.bypass:
+    default: op
+    description: Bypass protection
+
+  wireless.command.help:
+    default: op
+    description: Access to the help menu and tab-completion
+
+  wireless.command.give:
+    default: op
+    description: Access to /wireless give
+
+  wireless.command.*:
+    default: op
+    description: Access to all sub-commands
+    children:
+      wireless.command.help: true
+      wireless.command.give: true
+
+  wireless.*:
+    default: op
+    description: Accesss to all permissions
+    children:
+      wireless.command.*: true
+      wireless.bypass: true

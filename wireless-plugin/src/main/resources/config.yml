@@ -1,0 +1,133 @@
+# Configuration for Wireless by robertlit
+
+# General settings
+
+# Maximum amount of components each player may have
+max-player-components: 100
+
+# Maximum distance between connected components
+# Note that the distance is measured in all 3 axis, x, y and z, NOT just in x and z
+max-connection-distance: 2000
+
+# Protects components from being broken by entities other than the owner
+# and players who have the bypass permission
+protect-break: true
+
+# Protects components from being broken by explosions
+# Note that if this is set to false, the dropped item will be a normal item
+# and not a component's item
+protect-explosion: true
+
+# Protects components from being broken by burning
+protect-burn: true
+
+# Settings of items in various GUIs
+items:
+
+  # Item that fills the GUI instead of being empty
+  gui-background: GRAY_STAINED_GLASS_PANE
+
+  # Item that indicates that no transmitter is currently
+  # connected to a receiver
+  no-transmitter-connected: BARRIER
+
+  # Item that points to the next page in multi-
+  # paged GUIs
+  next-page: ARROW
+
+  # Item that points to the previous page in multi-
+  # paged GUIs
+  previous-page: ARROW
+
+  # Item that points to the previous GUI or exists a GUI
+  go-back: BARRIER
+
+  # Item that opens a GUI to connect receivers to a transmitter
+  connect-receivers: IRON_BLOCK
+
+  # Used when a component shown in a GUI is no longer valid
+  no-longer-valid: BARRIER
+
+# Language settings
+lang:
+
+  # Display name of wireless transmitter items
+  wireless-transmitter-name: "&9&lWireless Transmitter"
+
+  # Lore of wireless transmitter items
+  wireless-transmitter-lore: []
+
+  # Display name of wireless receiver items
+  wireless-receiver-name: "&9&lWireless Receiver"
+
+  # Lore of wireless receiver items
+  wireless-receiver-lore: []
+
+  # Title of wireless transmitter control GUI
+  wireless-transmitter-inventory-title: "&9&lControl Wireless Transmitter"
+
+  # Title of wireless receiver control GUI
+  wireless-receiver-inventory-title: "&9&lControl Wireless Receiver"
+
+  # Text shown when no transmitter is connected
+  no-transmitter-connected: "&c&lNo transmitter connected"
+
+  # Text shown when a transmitter is connected
+  connected-to-transmitter: "&9&lConnected to transmitter"
+
+  # Text indicating disconnection, used in various GUIs
+  click-to-disconnect: "&c&lCLICK TO DISCONNECT"
+
+  # Text indicating connection, used in various GUIs
+  click-to-connect: "&a&lCLICK TO CONNECT"
+
+  # Title of GUI where viewing available transmitters
+  # %current_page% - replaced with the current page
+  # %total_pages% - replaced with the total amount of pages
+  available-transmitters: "&9&lAvailable Transmitters %current_page% / %total_pages%"
+
+  # Title of GUI where viewing available receivers
+  # %current_page% - replaced with the current page
+  # %total_pages% - replaced with the total amount of pages
+  available-receivers: "&9&lAvailable Receivers %current_page% / %total_pages%"
+
+  # Text indicating moving to the next page
+  next-page: "&aNext page"
+
+  # Text indicating moving to the previous page
+  previous-page: "&aPrevious page"
+
+  # Text indicating moving to the previous GUI or exiting
+  go-back: "&cGo back"
+
+  # Text that goes on the "connect-receivers" item's name
+  view-receivers: "&9&lView receivers"
+
+  # Text that goes on the "connect-receivers" item's lore
+  connect-and-disconnect-receivers: "&a&lCLICK TO CONNECT AND &c&lDISCONNECT &a&lRECEIVERS"
+
+  # Message shown to players when attempting to do something
+  # they don't have permission for
+  disallowed: "&cYou can't do that!"
+
+  # Message shown when the player specified as command argument
+  # is not online or does not exist
+  player-not-online: "&cThe specified player is not online"
+
+  # Message shown when the component type specified as command argument
+  # is invalid
+  invalid-component-type: "&cThe component type should be either transmitter or receiver"
+
+  # Message shown when the material specified as command argument
+  # is invalid
+  invalid-material: "&aSuccessfully given an item"
+
+  # Used when showing available subcommands
+  available-subcommands: "&2Available subcommands:"
+
+  # Message shown when a player has the maximum amount
+  # of components and attempts to place one
+  too-many-components: "&cYou have reached the maximum amount of components"
+
+  # Used when a component shown in a GUI is no longer valid
+  no-longer-valid: "&cNO LONGER VALID"

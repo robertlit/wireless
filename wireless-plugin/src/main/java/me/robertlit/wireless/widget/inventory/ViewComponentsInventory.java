@@ -134,7 +134,7 @@ public class ViewComponentsInventory<S extends WirelessComponent> implements Cus
             }
             clickHandler.accept(clicked);
             if (goBackOnSuccess) {
-                goBackHandler.accept(player);
+                plugin.getServer().getScheduler().runTask(plugin, () -> goBackHandler.accept(player));
                 return;
             }
             event.setCurrentItem(Items.createDisplayItem(clicked, lastLine.apply(clicked))); // update current item

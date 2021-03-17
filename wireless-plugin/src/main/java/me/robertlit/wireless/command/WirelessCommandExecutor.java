@@ -54,7 +54,9 @@ public class WirelessCommandExecutor implements TabExecutor {
         if (sender.hasPermission("wireless.command.help")) {
             sender.sendMessage(Lang.availableSubcommands);
             for (WirelessCommand available : this.commands.values()) {
-                sender.sendMessage(ChatColor.DARK_GREEN + available.getUsageMessage());
+                if (sender.hasPermission(available.getPermission())) {
+                    sender.sendMessage(ChatColor.DARK_GREEN + available.getUsageMessage());
+                }
             }
         } else {
             sender.sendMessage(Lang.disallowed);
@@ -66,15 +68,9 @@ public class WirelessCommandExecutor implements TabExecutor {
     @Override
     public List<String> onTabComplete(@NotNull CommandSender sender, @NotNull Command command, @NotNull String alias, @NotNull String[] args) {
         if (args.length == 0) {
-            if (sender.hasPermission("wireless.command.help")) {
-                return new ArrayList<>(commands.keySet());
-            }
+            return complete(sender);
         } else if (args.length == 1) {
-            if (sender.hasPermission("wireless.command.help")) {
-                List<String> commands = new ArrayList<>(this.commands.keySet());
-                commands.add("help");
-                return WirelessCommandExecutor.copyPartialMatches(args[0], commands, new ArrayList<>());
-            }
+            return WirelessCommandExecutor.copyPartialMatches(args[0], complete(sender), new ArrayList<>());
         } else {
             WirelessCommand wirelessCommand = commands.get(args[0].toLowerCase());
             if (wirelessCommand != null) {
@@ -84,6 +80,15 @@ public class WirelessCommandExecutor implements TabExecutor {
             }
         }
         return Collections.emptyList();
+    }
+
+    private List<String> complete(CommandSender sender) {
+        List<String> commands = new ArrayList<>(this.commands.keySet());
+        commands.removeIf(s -> !sender.hasPermission(this.commands.get(s).getPermission()));
+        if (sender.hasPermission("wireless.command.help")) {
+            commands.add("help");
+        }
+        return commands;
     }
 
     protected static <T extends Collection<? super String>> T copyPartialMatches(String token, Iterable<? extends String> iterable, T collection) {

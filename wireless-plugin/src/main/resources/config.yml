@@ -21,6 +21,12 @@ protect-explosion: true
 # Protects components from being broken by burning
 protect-burn: true
 
+# Radius in which components can be highlighted
+highlight-distance: 50
+
+# Type of particle used in highlight
+highlight-particle: VILLAGER_HAPPY
+
 # Settings of items in various GUIs
 items:
 
@@ -131,3 +137,6 @@ lang:
 
   # Used when a component shown in a GUI is no longer valid
   no-longer-valid: "&cNO LONGER VALID"
+
+  # Used when highlight is toggled
+  highlight-toggle: "&2Toggled highlight"

@@ -23,10 +23,12 @@ import me.robertlit.wireless.api.component.inventory.WirelessComponentInventoryW
 import me.robertlit.wireless.component.WirelessComponentManager;
 import me.robertlit.wireless.component.WirelessReceiverImpl;
 import me.robertlit.wireless.component.WirelessTransmitterImpl;
+import me.robertlit.wireless.highlight.HighlightExecutor;
 import me.robertlit.wireless.inventory.InventoryManager;
 import me.robertlit.wireless.settings.Items;
 import org.bukkit.Location;
 import org.bukkit.Material;
+import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
@@ -42,10 +44,12 @@ public class WirelessAPIImpl implements WirelessAPI {
 
     private final WirelessComponentManager manager;
     private final InventoryManager inventoryManager;
+    private final HighlightExecutor highlightExecutor;
 
-    public WirelessAPIImpl(@NotNull WirelessComponentManager manager, @NotNull InventoryManager inventoryManager) {
+    public WirelessAPIImpl(@NotNull WirelessComponentManager manager, @NotNull InventoryManager inventoryManager, HighlightExecutor highlightExecutor) {
         this.manager = manager;
         this.inventoryManager = inventoryManager;
+        this.highlightExecutor = highlightExecutor;
     }
 
     @Override
@@ -114,5 +118,10 @@ public class WirelessAPIImpl implements WirelessAPI {
     @Override
     public @NotNull ItemStack createItem(@NotNull Material material, @NotNull Class<? extends WirelessComponent> clazz) {
         return Items.createItem(material, clazz);
+    }
+
+    @Override
+    public void toggleHighlight(@NotNull Player player) {
+        highlightExecutor.toggle(player.getUniqueId());
     }
 }

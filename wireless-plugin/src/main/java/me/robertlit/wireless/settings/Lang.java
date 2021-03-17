@@ -47,4 +47,5 @@ public final class Lang {
     public static String availableSubcommands; // = ChatColor.DARK_GREEN + "Available subcommands:";
     public static String tooManyComponents;
     public static String noLongerValid;
+    public static String highlightToggle;
 }

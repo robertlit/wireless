@@ -19,6 +19,7 @@ package me.robertlit.wireless.settings;
 import com.google.common.base.Enums;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
+import org.bukkit.Particle;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.FileConfiguration;
 
@@ -33,6 +34,8 @@ public class ConfigLoader {
         Settings.protectBreak = config.getBoolean("protect-break", true);
         Settings.protectExplosion = config.getBoolean("protect-explosion", true);
         Settings.protectBurn = config.getBoolean("protect-burn", true);
+        Settings.highlightsDistance = config.getDouble("highlight-distance", 50);
+        Settings.highlightParticle = getEnum(config, "highlight-particle", Particle.class, Particle.VILLAGER_HAPPY);
 
         ConfigurationSection lang = config.getConfigurationSection("lang");
         Objects.requireNonNull(lang, "You have forgotten to specify language information");
@@ -67,6 +70,7 @@ public class ConfigLoader {
         Lang.availableSubcommands = getColored(lang, "available-subcommands", "&2Available subcommands:");
         Lang.tooManyComponents = getColored(lang, "too-many-components", "&cYou have reached the maximum amount of components");
         Lang.noLongerValid = getColored(lang, "no-longer-valid", "&cNO LONGER VALID");
+        Lang.highlightToggle = getColored(lang, "highlight-toggle", "&2Toggled highlight");
 
         ConfigurationSection items = config.getConfigurationSection("items");
         Objects.requireNonNull(items, "You have forgotten to specify items information");
@@ -87,7 +91,11 @@ public class ConfigLoader {
         return ChatColor.translateAlternateColorCodes('&', s);
     }
 
+    private <E extends Enum<E>> E getEnum(ConfigurationSection section, String path, Class<E> clazz, E def) {
+        return Enums.getIfPresent(clazz, section.getString(path, "")).or(def);
+    }
+
     private Material material(ConfigurationSection section, String path, Material def) {
-        return Enums.getIfPresent(Material.class, section.getString(path, "")).or(def);
+        return getEnum(section, path, Material.class, def);
     }
 }

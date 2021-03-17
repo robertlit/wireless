@@ -22,6 +22,7 @@ import me.robertlit.wireless.api.component.WirelessTransmitter;
 import me.robertlit.wireless.api.component.inventory.WirelessComponentInventoryWidget;
 import org.bukkit.Location;
 import org.bukkit.Material;
+import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.jetbrains.annotations.*;
 
@@ -135,4 +136,10 @@ public interface WirelessAPI {
     @Contract(value = "_, _ -> new", pure = true)
     @NotNull
     ItemStack createItem(@NotNull Material material, @NotNull Class<? extends WirelessComponent> clazz);
+
+    /**
+     * Toggles whether components are highlighted to the given player
+     * @param player the player to toggle highlight to
+     */
+    void toggleHighlight(@NotNull Player player);
 }

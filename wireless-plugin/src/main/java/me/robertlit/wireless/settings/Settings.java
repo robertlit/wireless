@@ -16,6 +16,8 @@
  */
 package me.robertlit.wireless.settings;
 
+import org.bukkit.Particle;
+
 public class Settings {
 
     private Settings() {}
@@ -27,4 +29,6 @@ public class Settings {
     public static boolean protectExplosion;
     public static boolean protectBurn;
 
+    public static double highlightsDistance;
+    public static Particle highlightParticle;
 }

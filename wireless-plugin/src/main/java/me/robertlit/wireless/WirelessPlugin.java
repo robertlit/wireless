@@ -23,6 +23,8 @@ import me.robertlit.wireless.api.component.WirelessReceiver;
 import me.robertlit.wireless.api.component.WirelessTransmitter;
 import me.robertlit.wireless.command.WirelessCommandExecutor;
 import me.robertlit.wireless.command.WirelessGiveCommand;
+import me.robertlit.wireless.command.WirelessHighlightCommand;
+import me.robertlit.wireless.highlight.HighlightExecutor;
 import me.robertlit.wireless.component.WirelessComponentManager;
 import me.robertlit.wireless.component.WirelessComponentUpdateTask;
 import me.robertlit.wireless.component.WirelessReceiverImpl;
@@ -101,14 +103,18 @@ public final class WirelessPlugin extends JavaPlugin {
 
         new WirelessComponentUpdateTask(this.manager).runTaskTimer(this, 0, 1);
 
+        HighlightExecutor highlightExecutor = new HighlightExecutor(manager);
+        highlightExecutor.runTaskTimerAsynchronously(this, 0, 5);
+
         WirelessCommandExecutor commandExecutor = new WirelessCommandExecutor();
         commandExecutor.addCommand(new WirelessGiveCommand());
+        commandExecutor.addCommand(new WirelessHighlightCommand(highlightExecutor));
         PluginCommand command = super.getCommand("wireless");
         if (command != null) {
             command.setExecutor(commandExecutor);
         }
 
-        Bukkit.getServicesManager().register(WirelessAPI.class, new WirelessAPIImpl(manager, inventoryManager), this, ServicePriority.Normal);
+        Bukkit.getServicesManager().register(WirelessAPI.class, new WirelessAPIImpl(manager, inventoryManager, highlightExecutor), this, ServicePriority.Normal);
     }
 
     @Override

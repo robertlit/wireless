@@ -17,11 +17,15 @@ permissions:
 
   wireless.command.help:
     default: op
-    description: Access to the help menu and tab-completion
+    description: Access to /wireless help
 
   wireless.command.give:
     default: op
     description: Access to /wireless give
+
+  wireless.command.highlight:
+    default: op
+    description: Access to /wireless highlight
 
   wireless.command.*:
     default: op
@@ -29,6 +33,7 @@ permissions:
     children:
       wireless.command.help: true
       wireless.command.give: true
+      wireless.command.highlight: true
 
   wireless.*:
     default: op

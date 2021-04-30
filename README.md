@@ -1,6 +1,6 @@
 # Wireless
 
-[Documentation]("https://robertlit.gitbook.io/wireless/")  **|** [API Javadoc]("https://robertlit.github.io/wireless/docs/")
+[Documentation](https://robertlit.gitbook.io/wireless/)  _**|**_ [API Javadoc](https://robertlit.github.io/wireless/docs/)
 
 Transmit redstone signals without wires.
 

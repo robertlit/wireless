@@ -51,7 +51,11 @@ public final class Items {
 
     public static void setGuiBackground(@NotNull Material material) {
         guiBackground = new ItemStack(material);
-        guiBackground.setItemMeta(null);
+        ItemMeta meta = guiBackground.getItemMeta();
+        if (meta != null) {
+            meta.setDisplayName(" ");
+            guiBackground.setItemMeta(meta);
+        }
     }
 
     public static void setNoTransmitterConnected(@NotNull Material material) {

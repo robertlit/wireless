@@ -120,7 +120,10 @@ lang:
 
   # Message shown when the material specified as command argument
   # is invalid
-  invalid-material: "&aSuccessfully given an item"
+  invalid-material: "&cPlease specify a valid material"
+
+  # Used when an item is given with /wireless give
+  give-successful: "&aSuccessfully given an item"
 
   # Used when showing available subcommands
   available-subcommands: "&2Available subcommands:"

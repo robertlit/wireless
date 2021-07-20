@@ -86,10 +86,4 @@ public class ConnectReceiversWidget implements WirelessComponentInventoryWidget<
                     }
                 }, transmitter::openInventory, false, Lang.availableReceivers, widgetInventoryManager, plugin).open(player));
     }
-
-    @Override
-    @NotNull
-    public String getIdentifier() {
-        return "wireless_connect_receivers";
-    }
 }

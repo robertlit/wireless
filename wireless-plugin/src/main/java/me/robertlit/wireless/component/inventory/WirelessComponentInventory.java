@@ -60,9 +60,9 @@ public class WirelessComponentInventory<T extends WirelessComponent> implements 
         List<ItemStack> items = new ArrayList<>();
         for (WirelessComponentInventoryWidget<? super T> widget : widgets) {
             ItemStack item = this.createWidgetItem(widget);
-            if (item != null && !this.widgets.containsKey(widget.getIdentifier())) {
+            if (item != null && !this.widgets.containsKey(widget.getClass().getName())) {
                 items.add(item);
-                this.widgets.put(widget.getIdentifier(), widget);
+                this.widgets.put(widget.getClass().getName(), widget);
             }
         }
         return items; // return the items to avoid iterating through the widgets two times
@@ -132,10 +132,7 @@ public class WirelessComponentInventory<T extends WirelessComponent> implements 
 
     @Nullable
     private ItemStack createWidgetItem(@NotNull WirelessComponentInventoryWidget<? super T> widget) {
-        String identifier = widget.getIdentifier();
-        if (identifier == null) {
-            return null;
-        }
+        String identifier = widget.getClass().getName();
         ItemStack item = widget.getDisplayItem(component);
         if (item == null) {
             return null;

@@ -99,10 +99,4 @@ public class ConnectTransmitterWidget implements WirelessComponentInventoryWidge
         }
         receiver.unsubscribe();
     }
-
-    @Override
-    @NotNull
-    public String getIdentifier() {
-        return "wireless_connect_transmitter";
-    }
 }

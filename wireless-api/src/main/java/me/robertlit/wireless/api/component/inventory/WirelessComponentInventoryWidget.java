@@ -66,14 +66,4 @@ public interface WirelessComponentInventoryWidget<T extends WirelessComponent> {
      * @param event the event causing this method to be called
      */
     void handleClick(@NotNull T component, @NotNull InventoryClickEvent event);
-
-    /**
-     * This method should be overridden and return a constant unique identifier for this widget.
-     * <p>
-     * The recommended format is (plugin name)_(widget name) in lower case.
-     * </p>
-     * @return a constant unique identifier for this widget
-     */
-    @NotNull
-    String getIdentifier();
 }

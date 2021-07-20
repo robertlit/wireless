@@ -73,18 +73,12 @@ public class WirelessAPIImpl implements WirelessAPI {
 
     @Override
     public boolean registerTransmitterWidget(@NotNull WirelessComponentInventoryWidget<? super WirelessTransmitter> widget) {
-        return inventoryManager.addTransmitterWidget(verifyWidget(widget));
+        return inventoryManager.addTransmitterWidget(Objects.requireNonNull(widget, "widget can not be null"));
     }
 
     @Override
     public boolean registerReceiverWidget(@NotNull WirelessComponentInventoryWidget<? super WirelessReceiver> widget) {
-        return inventoryManager.addReceiverWidget(verifyWidget(widget));
-    }
-
-    private <T extends WirelessComponentInventoryWidget<?>> T verifyWidget(T widget) {
-        Objects.requireNonNull(widget, "widget can not be null");
-        Objects.requireNonNull(widget.getIdentifier(), "widget identifier can not be null");
-        return widget;
+        return inventoryManager.addReceiverWidget(Objects.requireNonNull(widget, "widget can not be null"));
     }
 
     @Override
